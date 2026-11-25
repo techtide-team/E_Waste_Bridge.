@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Login | E-Waste Bridge</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .login-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 430px;
+            padding: 40px;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+        }
+
+        .login-card h1 {
+            margin-bottom: 10px;
+        }
+
+        .login-card p {
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .login-card label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .login-card button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #c5ff55;
+            color: #08130f;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-card button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #loginMessage {
+            margin-top: 18px;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="login-section">
+
+        <div class="login-card">
+
+            <h1>College Login</h1>
+
+            <p>
+                Welcome to E-Waste Bridge.
+                Sign in to manage your institution's e-waste requests.
+            </p>
+
+            <form id="collegeLoginForm">
+
+                <label for="email">College Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your registered email"
+                    required
+                >
+
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit" id="loginButton">
+                    Login
+                </button>
+
+            </form>
+
+            <p id="loginMessage" role="status"></p>
+
+            <a href="index.html" class="back-link">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </section>
+
+    <script type="module">
+
+        import { supabase } from "./supabase.js";
+
+        const loginForm = document.getElementById("collegeLoginForm");
+        const loginMessage = document.getElementById("loginMessage");
+        const loginButton = document.getElementById("loginButton");
+
+        loginForm.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            loginButton.disabled = true;
+            loginButton.textContent = "Logging in...";
+            loginMessage.textContent = "";
+
+            try {
+
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                if (error) {
+                    throw error;
+                }
+
+                const user = data.user;
+
+                const { data: profile, error: profileError } = await supabase
+                    .from("profiles")
+                    .select("role, college_id")
+                    .eq("user_id", user.id)
+                    .maybeSingle();
+
+                if (profileError) {
+                    throw profileError;
+                }
+
+                if (!profile || profile.role !== "college" || !profile.college_id) {
+
+                    await supabase.auth.signOut();
+
+                    throw new Error(
+                        "This account is not registered as a college account."
+                    );
+                }
+
+                loginMessage.textContent = "Login successful! Redirecting...";
+
+                window.location.href = "college-dashboard.html";
+
+            } catch (error) {
+
+                loginMessage.textContent = error.message;
+                loginButton.disabled = false;
+                loginButton.textContent = "Login";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Dashboard | E-Waste Bridge</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>E-Waste Bridge</h2>
+
+<nav>
+    <a href="index.html">← Back to Home</a>
+    <a href="#overview">Overview</a>
+                <a href="#requests">My Requests</a>
+                <a href="#offers">Recycler Offers</a>
+                <a href="#tracking">Collection Tracking</a>
+                <a href="#reports">Reports</a>
+                <a href="#history">Recycling History</a>
+                <a href="#passport">E-Waste Passport</a>
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard -->
+        <main class="main-content">
+
+            <header class="dashboard-header">
+    <h1 id="collegeName">College Dashboard</h1>
+    <p>Manage your e-waste recycling activities.</p>
+    <button id="logoutButton">Logout</button>
+</header>
+
+            <!-- Overview -->
+            <section id="overview">
+                <h2>Overview</h2>
+
+                
+<div class="stats-container">
+
+    <div class="stat-card">
+        <h3>Total Requests</h3>
+        <p id="totalCollegeRequests">—</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending Requests</h3>
+        <p id="pendingCollegeRequests">—</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Completed Collections</h3>
+        <p id="completedCollegeCollections">—</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending Collections</h3>
+        <p id="pendingCollegeCollections">—</p>
+    </div>
+
+</div>
+
+            </section>
+            <!-- My Requests -->
+<section id="requests">
+    <h2>My Requests</h2>
+    <!-- New E-Waste Request Form -->
+<div class="request-form-container">
+
+    <h3>Submit a New E-Waste Request</h3>
+
+    <form id="requestForm">
+
+        <label>Contact Number</label>
+        <input
+            type="tel"
+            id="requestPhone"
+            required
+            placeholder="Enter contact number"
+        >
+
+        <label>Waste Category</label>
+        <select id="requestCategory" required>
+            <option value="">Select category</option>
+            <option value="Mobile Phones">Mobile Phones</option>
+            <option value="Laptops">Laptops</option>
+            <option value="Desktop Computers">Desktop Computers</option>
+            <option value="Batteries">Batteries</option>
+            <option value="TVs/Monitors">TVs/Monitors</option>
+            <option value="Electronic Components">Electronic Components</option>
+            <option value="Other Electronics">Other Electronics</option>
+        </select>
+
+        <label>Declared Quantity</label>
+        <input
+            type="number"
+            id="requestQuantity"
+            min="1"
+            required
+            placeholder="Enter quantity"
+        >
+
+        <label>Quantity Unit</label>
+        <select id="quantityUnit" required>
+            <option value="devices">Devices</option>
+            <option value="kg">Kilograms (kg)</option>
+        </select>
+
+        <label>Collection Location</label>
+        <input
+            type="text"
+            id="requestLocation"
+            required
+            placeholder="Enter collection location"
+        >
+
+        <label>Device Condition</label>
+        <select id="requestCondition">
+            <option value="">Select condition</option>
+            <option value="Working">Working</option>
+            <option value="Damaged">Damaged</option>
+            <option value="Mixed">Mixed condition</option>
+        </select>
+
+        <label>Additional Notes</label>
+        <textarea
+            id="requestNotes"
+            placeholder="Enter additional details"
+        ></textarea>
+
+        <button type="submit">Submit Request</button>
+
+        <p id="requestMessage" role="status"></p>
+
+    </form>
+</div>
+
+    <div class="request-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Category</th>
+                    <th>Declared Quantity</th>
+                    <th>Collected Quantity</th>
+                    <th>Pending Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+<tbody id="requestsTableBody">
+    <tr>
+        <td colspan="6">Loading your requests...</td>
+    </tr>
+</tbody>   
+        </table>
+    </div>
+</section>
+
+
+            <!-- Recycler Offers -->
+            
+<!-- Recycler Offers -->
+<section id="offers">
+
+    <h2>Recycler Offers</h2>
+
+    <div class="offers-container" id="offersContainer">
+        <p>Loading recycler quotations...</p>
+    </div>
+</section>
+
+
+            <!-- Collection Tracking -->
+            
+
+<!-- Collection Tracking -->
+<section id="tracking">
+
+    <h2>Collection Tracking</h2>
+
+    <p>Monitor declared quantities, actual collections and pending quantities.</p>
+
+    <div class="tracking-container" id="trackingContainer">
+        <p>Loading collection records...</p>
+    </div>
+
+</section>
+
+
+
+            
+<!-- Reports -->
+<section id="reports">
+
+    <h2>Recycling Reports</h2>
+
+    <p>Overview of your institution's recycling performance.</p>
+
+    <div class="stats-container">
+
+        <div class="stat-card">
+            <h3>Total Quotations</h3>
+            <p id="reportTotalQuotations">—</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Accepted Quotations</h3>
+            <p id="reportAcceptedQuotations">—</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Collections Recorded</h3>
+            <p id="reportCollectionsRecorded">—</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Mismatches Under Review</h3>
+            <p id="reportMismatches">—</p>
+        </div>
+
+    </div>
+
+    <div id="reportRequestsContainer">
+        <p>Loading recycling reports...</p>
+    </div>
+
+</section>
+
+<!-- Recycling History -->
+<section id="history">
+
+    <h2>Recycling History</h2>
+
+    <p>Track every important activity in your e-waste recycling journey.</p>
+
+    <div id="historyContainer">
+        <p>Loading recycling history...</p>
+    </div>
+
+</section>
+        
+
+<!-- E-Waste Passport -->
+<section id="passport">
+
+    <h2>E-Waste Passport</h2>
+
+    <p>Digital history of your e-waste recycling requests.</p>
+
+    <div id="passportContainer">
+        <p>Loading your E-Waste Passports...</p>
+    </div>
+
+</section>
+
+
+</main>
+    </div>
+<script type="module" src="college-dashboard-auth.js"></script>
+</body>
+</html>

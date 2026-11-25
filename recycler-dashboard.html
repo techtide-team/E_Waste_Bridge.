@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycler Dashboard | E-Waste Bridge</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>E-Waste Bridge</h2>
+            <p>Recycler Portal</p>
+
+<nav>
+    <a href="index.html">← Back to Home</a>
+    <a href="#overview">Overview</a>
+    <a href="#requests">Available Requests</a>
+    <a href="#assigned-requests">Assigned Requests</a>
+    <a href="#my-activities">My Activities</a>
+</nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="dashboard-header">
+                <h1>Recycler Dashboard</h1>
+                <p>Discover e-waste collection opportunities.</p>
+                <button id="logoutButton">Logout</button>
+            </header>
+
+            <!-- Overview -->
+            <section id="overview">
+                <h2>Overview</h2>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Available Requests</h3>
+                        <strong id="totalRequests">—</strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Available Requests -->
+            <section id="requests">
+                <h2>Available College Requests</h2>
+                <p>Explore e-waste requests submitted by institutions.</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>College</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recyclerRequestsBody">
+                            <tr>
+                                <td colspan="7">
+                                    Loading available requests...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+<!-- Assigned Requests -->
+<section id="assigned-requests">
+
+    <h2>Assigned Requests</h2>
+
+    <p>Requests approved by colleges and assigned to you.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>College</th>
+                    <th>Category</th>
+                    <th>Declared Quantity</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="assignedRequestsBody">
+                <tr>
+                    <td colspan="7">
+                        Loading assigned requests...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+<!-- Collection Recording -->
+<section id="collectionSection" hidden>
+
+    <h2>Record Collection</h2>
+
+    <p id="selectedCollectionRequestInfo"></p>
+
+    <form id="collectionForm">
+
+        <label>Actual Collected Quantity</label>
+        <input
+            type="number"
+            id="collectedQuantity"
+            min="0"
+            step="0.01"
+            placeholder="Enter actual collected quantity"
+            required
+        >
+
+        <label>Collection Date</label>
+        <input
+            type="date"
+            id="collectionDate"
+            required
+        >
+
+        <label>Remarks</label>
+        <textarea
+            id="collectionRemarks"
+            rows="4"
+            placeholder="Enter collection remarks..."
+        ></textarea>
+
+        <button type="submit">Save Collection</button>
+
+        <button type="button" id="cancelCollection">
+            Cancel
+        </button>
+
+        <p id="collectionMessage"></p>
+
+    </form>
+
+</section>
+
+
+<!-- Quotation Submission Form -->
+
+<section id="quotationSection" hidden>
+
+    <h2>Submit Your Quotation</h2>
+
+    <p id="selectedRequestInfo"></p>
+
+    <form id="quotationForm">
+
+        <label>Offered Amount (₹)</label>
+        <input
+            type="number"
+            id="offeredAmount"
+            min="0"
+            step="0.01"
+            placeholder="Enter your offered amount"
+            required
+        >
+
+        <label>Collection Charges (₹)</label>
+        <input
+            type="number"
+            id="collectionCharges"
+            min="0"
+            step="0.01"
+            placeholder="Enter collection charges"
+            required
+        >
+
+        <label>Estimated Collection Days</label>
+        <input
+            type="number"
+            id="estimatedDays"
+            min="1"
+            placeholder="Example: 3 days"
+            required
+        >
+
+        <label>Terms and Conditions</label>
+        <textarea
+            id="quotationTerms"
+            rows="4"
+            placeholder="Enter quotation terms..."
+            required
+        ></textarea>
+
+        <button type="submit">Submit Quotation</button>
+
+        <button type="button" id="cancelQuotation">
+            Cancel
+        </button>
+
+        <p id="quotationMessage"></p>
+
+    </form>
+
+</section>
+
+            <!-- My Activities -->
+<section id="my-activities">
+
+    <h2>My Activities</h2>
+
+    <p>Track your quotation submissions and collection activities.</p>
+
+    <div id="recyclerHistoryContainer">
+        <p>Loading your recycling activities...</p>
+    </div>
+
+</section>
+
+        </main>
+    </div>
+<script type="module" src="recycler-dashboard.js"></script>
+</body>
+</html>

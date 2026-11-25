@@ -1,0 +1,505 @@
+
+/* =====================================
+   E-WASTE BRIDGE - COLLEGE DASHBOARD
+   FUTURISTIC ECO-TECH THEME
+===================================== */
+
+:root {
+    --bg: #08130f;
+    --bg2: #0d1d16;
+    --panel: #11251b;
+    --lime: #c5ff55;
+    --cyan: #35e6d0;
+    --white: #edf8ef;
+    --muted: #9aafa1;
+    --border: rgba(197,255,85,0.17);
+    --glow: rgba(197,255,85,0.14);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 80% 0%, #17452b30, transparent 40%),
+        var(--bg);
+    color: var(--white);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* MAIN LAYOUT */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 255px;
+    min-width: 255px;
+    background: #09170f;
+    border-right: 1px solid var(--border);
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin: 5px 10px 8px;
+}
+
+.sidebar h2 span {
+    color: var(--lime);
+}
+
+.sidebar p {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin: 0 10px 40px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 13px 15px;
+    margin-bottom: 7px;
+    color: #a9bbae;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-size: 12px;
+    transition: 0.25s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    color: var(--lime);
+    background: #c5ff5510;
+    border-color: var(--border);
+}
+
+.sidebar a.active {
+    box-shadow: inset 3px 0 var(--lime);
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 35px 42px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #ffffff12;
+}
+
+.dashboard-header h1 {
+    font-size: clamp(22px, 3vw, 30px);
+    letter-spacing: -1px;
+}
+
+.dashboard-header p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* BUTTONS */
+
+button {
+    background: var(--lime);
+    color: var(--bg);
+    border: none;
+    border-radius: 6px;
+    padding: 11px 20px;
+    font-size: 11px;
+    font-weight: 800;
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px #c5ff5530;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* SECTION HEADINGS */
+
+.main-content h2 {
+    font-size: 22px;
+    margin-bottom: 22px;
+    letter-spacing: -0.5px;
+}
+
+.main-content h3 {
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+/* DASHBOARD CARDS */
+
+.stats-container,
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 17px;
+    margin-bottom: 32px;
+}
+
+.stat-card,
+.dashboard-card {
+    background: linear-gradient(145deg, #152b1e, #0d1d15);
+    border: 1px solid #ffffff12;
+    border-radius: 10px;
+    padding: 23px;
+    transition: 0.3s;
+}
+
+.stat-card:hover,
+.dashboard-card:hover {
+    border-color: #c5ff5570;
+    transform: translateY(-4px);
+}
+
+.stat-card h3 {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 30px;
+    color: var(--lime);
+    margin-top: 9px;
+}
+
+/* REQUEST FORM */
+
+.request-form-container {
+    background: linear-gradient(145deg, #142a1d, #0d1d15);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 25px 0 35px;
+    box-shadow: 0 15px 40px #0003;
+}
+
+#requestForm {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 20px;
+}
+
+#requestForm label {
+    color: #d8e8dc;
+    font-size: 11px;
+    font-weight: 700;
+    align-self: end;
+}
+
+#requestForm input,
+#requestForm select,
+#requestForm textarea {
+    width: 100%;
+    padding: 13px;
+    color: var(--white);
+    background: #09170f;
+    border: 1px solid #ffffff20;
+    border-radius: 6px;
+    outline: none;
+    font-size: 12px;
+    transition: 0.25s;
+}
+
+#requestForm input:focus,
+#requestForm select:focus,
+#requestForm textarea:focus {
+    border-color: var(--lime);
+    box-shadow: 0 0 0 3px #c5ff5512;
+}
+
+#requestForm select option {
+    background: var(--panel);
+}
+
+#requestForm textarea {
+    min-height: 90px;
+    resize: vertical;
+    grid-column: 1 / -1;
+}
+
+#requestForm button {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+}
+
+#requestMessage {
+    grid-column: 1 / -1;
+    color: var(--cyan);
+    font-size: 12px;
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+table thead {
+    background: #c5ff550c;
+}
+
+table th {
+    color: var(--lime);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 16px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+table td {
+    padding: 16px 14px;
+    color: #d0dfd4;
+    font-size: 12px;
+    border-bottom: 1px solid #ffffff10;
+}
+
+table tbody tr {
+    transition: 0.2s;
+}
+
+table tbody tr:hover {
+    background: #c5ff5508;
+}
+
+table td:first-child {
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #102219;
+    border: 1px solid #ffffff12;
+    border-radius: 10px;
+}
+
+/* STATUS BADGES */
+
+.status,
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #c5ff5515;
+    color: var(--lime);
+    font-size: 10px;
+}
+
+/* OTHER CONTENT CARDS */
+
+.main-content section {
+    margin-bottom: 40px;
+}
+
+.main-content section p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* FORM PLACEHOLDERS */
+
+input::placeholder,
+textarea::placeholder {
+    color: #718477;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #36523d;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--lime);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 210px;
+        min-width: 210px;
+    }
+
+    .main-content {
+        padding: 28px 22px;
+    }
+}
+
+@media (max-width: 650px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        padding: 15px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar p {
+        margin-bottom: 15px;
+    }
+
+    .sidebar a {
+        display: inline-block;
+        margin: 3px;
+    }
+
+    .main-content {
+        padding: 22px 15px;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #requestForm {
+        grid-template-columns: 1fr;
+    }
+
+    #requestForm textarea,
+    #requestForm button,
+    #requestMessage {
+        grid-column: 1;
+    }
+}
+
+/* =====================================
+   TYPOGRAPHY SIZE IMPROVEMENTS
+===================================== */
+
+.sidebar h2 {
+    font-size: 23px;
+}
+
+.sidebar p {
+    font-size: 12px;
+}
+
+.sidebar a {
+    font-size: 14px;
+    padding: 15px;
+}
+
+.dashboard-header h1 {
+    font-size: 32px;
+}
+
+.dashboard-header p {
+    font-size: 15px;
+}
+
+.main-content h2 {
+    font-size: 27px;
+}
+
+.main-content h3 {
+    font-size: 19px;
+}
+
+.main-content section p {
+    font-size: 14px;
+}
+
+.stat-card h3 {
+    font-size: 14px;
+}
+
+.stat-card strong {
+    font-size: 36px;
+}
+
+#requestForm label {
+    font-size: 14px;
+}
+
+#requestForm input,
+#requestForm select,
+#requestForm textarea {
+    font-size: 14px;
+    padding: 15px;
+}
+
+#requestForm button {
+    font-size: 14px;
+    padding: 14px 22px;
+}
+
+#requestMessage {
+    font-size: 14px;
+}
+
+table th {
+    font-size: 12px;
+}
+
+table td {
+    font-size: 14px;
+    padding: 18px 14px;
+}
+
+.status,
+.status-badge {
+    font-size: 12px;
+}
